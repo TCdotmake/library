@@ -11,6 +11,9 @@
   --add-bg: #ff5a5f;
 }
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   position: relative;
   min-width: 100vw;
   min-height: 100vh;
@@ -110,4 +113,13 @@ header {
 }
 #add-book:hover {
   cursor: pointer;
+}
+
+.books {
+  min-height: 100%;
+  width: 90%;
+  align-self: center;
+}
+* {
+  border: 1px solid red;
 }

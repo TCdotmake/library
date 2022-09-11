@@ -8,16 +8,6 @@ function Book({ author, title, pages, read }) {
   this.read = read;
 }
 
-let test = {
-  author: "Scott Lynch",
-  title: "The Lies of Locke Lamora",
-  pages: 752,
-  read: true,
-};
-
-let newBook = new Book(test);
-console.log(newBook);
-let values = [];
 function handleSubmit(e) {
   e.preventDefault();
   const inputValues = document.querySelectorAll("input");
@@ -31,6 +21,7 @@ function handleSubmit(e) {
     }
   }
   if (valid) {
+    let values = [];
     for (let ele of inputValues) {
       if (ele.type === "checkbox") {
         values.push(ele.checked);
