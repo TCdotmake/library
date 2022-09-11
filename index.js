@@ -9,10 +9,40 @@ function Book({ author, title, pages, read }) {
 }
 
 function createCard(bookObj) {
-  const { author, title, pages, read } = bookObj;
+  let { author, title, pages, read } = bookObj;
+  if (read) {
+    read = "read";
+  } else {
+    read = "not read";
+  }
   const newCard = document.createElement("div");
-  newCard.classList.add("card");
+  newCard.classList.add("book-card");
+  const innerHTML = `<div class="b-title">
+  <span>${title}</span>
+</div>
+<div class="b-card-bottom">
+  <div class="b-author"><span>by </span><span>${author}</span></div>
+  <div class="b-page"><span>${pages}</span><span> pages</span></div>
+  <div class="b-btn-div">
+    <button class="b-btn"><span>${read}</span></button>
+    <button class="b-btn"><span>remove</span></button>
+  </div>
+</div>`;
+  newCard.innerHTML = innerHTML;
+  return newCard;
 }
+
+let test = {
+  author: "Scott Lynch",
+  title: "Red Seas Under Red Skies",
+  pages: 578,
+  read: false,
+};
+
+const testBook = createCard(new Book(test));
+console.log(testBook);
+const books = document.getElementById("books");
+books.insertAdjacentElement("beforeend", testBook);
 
 function handleSubmit(e) {
   e.preventDefault();
