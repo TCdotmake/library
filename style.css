@@ -120,6 +120,9 @@ header {
   width: 90%;
   align-self: center;
 }
-* {
-  border: 1px solid red;
+.book {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto auto;
+  gap: 10px;
 }
