@@ -7,6 +7,7 @@
   font-size: 16px;
 }
 body {
+  position: relative;
   min-width: 100vw;
   min-height: 100vh;
   background-color: rgb(158, 121, 121);
@@ -16,25 +17,56 @@ form{
   flex-direction: column;
   align-items: start;
   width: fit-content;
+  gap: 5px;
 }
 
 .card {
-  padding: 30px;
+  padding: 30px 30px 45px 30px;
   background: rgb(186, 212, 186);
   width: fit-content;
-}
-
-input[type='checkbox']{
-
+  border-radius: 10px;
 }
 
 input[type='text'],
-input[type='number'],
+input[type='number']
+{
+  width: 25ch;
+  border: none;
+  height: 1.5rem;
+  border-radius: 5px;
+}
+
 #submit-new{
-  width: 30ch;
+  width: fit-content;
+  padding: 10px 15px;
+  align-self: center;
+  border-radius: 5px;
+  border:none;
+}
+
+#submit-new:hover,
+input[type='checkbox']:hover
+{
+  cursor: pointer;
 }
 
 .checkbox-wrapper{
   display: flex;
   gap: 30px
 }
+
+.input-modal{
+  position: absolute;
+  top: 50%;
+  left: -10%;
+  transform: translate(-50%,-50%);
+  opacity: 0;
+  transition: all .5s ease-in-out;
+}
+
+.on-screen{
+  left: 50%;
+  transform: translate(-50%,-50%);
+  opacity: 1;
+}
+
