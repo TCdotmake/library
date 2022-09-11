@@ -6,16 +6,17 @@
   font-family: "Roboto", sans-serif;
   font-size: 16px;
   --input-width: 180px;
-  --bg:#F5F5F5;
-  --bg-text: #3C3C3C;
-  --add-bg: #FF5A5F;
+  --bg: #f5f5f5;
+  --bg-text: #3c3c3c;
+  --add-bg: #ff5a5f;
 }
 body {
   position: relative;
   min-width: 100vw;
   min-height: 100vh;
-background: var(--bg);}
-form{
+  background: var(--bg);
+}
+form {
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -30,67 +31,65 @@ form{
   border-radius: 10px;
 }
 
-input[type='text'],
-input[type='number']
-{
+input[type="text"],
+input[type="number"] {
   width: var(--input-width);
   border: none;
   height: 1.5rem;
   border-radius: 5px;
 }
 
-#submit-new{
+#submit-new {
   width: fit-content;
   padding: 10px 15px;
   align-self: center;
   border-radius: 5px;
-  border:none;
+  border: none;
 }
 
 #submit-new:hover,
-input[type='checkbox']:hover
-{
+input[type="checkbox"]:hover {
   cursor: pointer;
 }
 
-.checkbox-wrapper{
+.checkbox-wrapper {
   display: flex;
-  gap: 30px
+  gap: 30px;
 }
 
-.input-modal{
+.input-modal {
   position: absolute;
   top: 50%;
   left: 0%;
-  transform: translate(-95%,-50%);
+  transform: translate(-90%, -50%);
   opacity: 1;
-  transition: all .5s ease-in-out;
+  padding-right: 100px;
+  transition: all 0.5s ease-in-out;
 }
 
-.on-screen{
+.on-screen {
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   opacity: 1;
+  padding-right: 30px;
 }
 
-header{
+header {
   background: var(--bg-text);
   color: var(--bg);
   clip-path: polygon(0 0, 100% 0%, 100% 30%, 0% 100%);
 }
 
-.main-title{
-  font-family: 'Alfa Slab One', cursive;
+.main-title {
+  font-family: "Alfa Slab One", cursive;
   font-size: 5rem;
-  padding: .5rem;
-  padding-bottom: 2rem;;
+  padding: 0.5rem;
+  padding-bottom: 2rem;
   margin-left: 2rem;
   text-transform: uppercase;
 }
 
-
-
-#add-book{
+#add-book {
   position: absolute;
   right: -10%;
   top: -10%;
@@ -100,13 +99,15 @@ header{
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.5s ease-in-out;
 }
-.add-btn i{
-  color:var(--add-bg);
+.add-btn i {
+  color: var(--add-bg);
   font-size: 3rem;
-  
 }
-.rotate{transform: rotate(45deg);}
-#add-book:hover{
+.rotate {
+  transform: rotate(45deg);
+}
+#add-book:hover {
   cursor: pointer;
 }

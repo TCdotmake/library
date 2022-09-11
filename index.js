@@ -1,5 +1,5 @@
 let myLibrary = [];
-const modal = document.getElementsByClassName('input-modal')[0];
+const modal = document.getElementsByClassName("input-modal")[0];
 
 function Book({ author, title, pages, read }) {
   this.author = author;
@@ -43,7 +43,7 @@ function handleSubmit(e) {
     [title, author, pages, read] = values;
     myLibrary.push(new Book({ title, author, pages, read }));
     console.log("myLibrary", myLibrary);
-    modal.classList.toggle('on-screen')
+    modal.classList.toggle("on-screen");
   }
 }
 
@@ -52,9 +52,9 @@ submitBtn.addEventListener("click", (e) => {
   handleSubmit(e);
 });
 
-const addBtn = document.getElementById('add-book');
+const addBtn = document.getElementById("add-book");
 
-
-addBtn.addEventListener('click', ()=>{
-  modal.classList.toggle('on-screen')
-})
+addBtn.addEventListener("click", () => {
+  modal.classList.toggle("on-screen");
+  addBtn.classList.toggle("rotate");
+});
