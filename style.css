@@ -1,6 +1,7 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 :root {
   font-family: "Roboto", sans-serif;
@@ -119,10 +120,99 @@ header {
   min-height: 100%;
   width: 90%;
   align-self: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 .book {
   display: grid;
   grid-template-columns: auto auto;
   grid-template-rows: auto auto auto;
   gap: 10px;
+}
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--add-bg);
+  border-radius: 5px;
+}
+
+.b-title {
+  display: flex;
+  align-items: flex-end;
+  font-family: "Alfa Slab One", cursive;
+  font-size: 1.7rem;
+  background: var(--add-bg);
+  color: var(--bg);
+  line-height: 2rem;
+  text-align: center;
+  height: 200px;
+  padding: 0 30px;
+  position: relative;
+}
+
+.b-card-bottom {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  width: 100%;
+  color: var(--add-bg);
+}
+
+.b-author {
+  align-self: flex-end;
+  padding-right: 10px;
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.b-page {
+  position: absolute;
+  bottom: 1ch;
+  left: 1ch;
+}
+
+.b-btn-div {
+  position: absolute;
+  bottom: 1ch;
+  right: 1ch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.b-btn {
+  color: var(--add-bg);
+  background: var(--bg);
+  border: 1px solid var(--add-bg);
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  font-weight: 400;
+  border-radius: 5px;
+  height: 35px;
+  width: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.b-btn:nth-child(2) {
+  background: var(--add-bg);
+  color: var(--bg);
+}
+
+.b-btn:hover {
+  cursor: pointer;
+}
+
+.b-title i {
+  position: absolute;
+  top: 1ch;
+  right: 1ch;
+  color: var(--bg);
 }

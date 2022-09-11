@@ -8,6 +8,12 @@ function Book({ author, title, pages, read }) {
   this.read = read;
 }
 
+function createCard(bookObj) {
+  const { author, title, pages, read } = bookObj;
+  const newCard = document.createElement("div");
+  newCard.classList.add("card");
+}
+
 function handleSubmit(e) {
   e.preventDefault();
   const inputValues = document.querySelectorAll("input");
