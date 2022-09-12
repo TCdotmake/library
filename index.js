@@ -40,9 +40,17 @@ let test = {
 };
 
 const testBook = createCard(new Book(test));
+const testBook2 = createCard(new Book(test));
+const testBook3 = createCard(new Book(test));
+const testBook4 = createCard(new Book(test));
+const testBook5 = createCard(new Book(test));
 console.log(testBook);
 const books = document.getElementById("books");
 books.insertAdjacentElement("beforeend", testBook);
+books.insertAdjacentElement("beforeend", testBook2);
+books.insertAdjacentElement("beforeend", testBook3);
+books.insertAdjacentElement("beforeend", testBook4);
+books.insertAdjacentElement("beforeend", testBook5);
 
 function handleSubmit(e) {
   e.preventDefault();

@@ -179,6 +179,7 @@ header {
   position: absolute;
   bottom: 1ch;
   left: 1ch;
+  font-weight: 700;
 }
 
 .b-btn-div {
