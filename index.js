@@ -24,8 +24,8 @@ function createCard(bookObj, index) {
   <div class="b-author"><span>by </span><span>${author}</span></div>
   <div class="b-page"><span>${pages}</span><span> pages</span></div>
   <div class="b-btn-div">
-    <button class="b-btn read-btn"><span>${read}</span></button>
-    <button class="b-btn delete-btn"><span>remove</span></button>
+    <button class="b-btn read-btn">${read}</button>
+    <button class="b-btn delete-btn">remove</button>
   </div>
 </div>`;
   newCard.innerHTML = innerHTML;
@@ -81,7 +81,22 @@ function addBook() {
   const newBook = createCard(new Book(myLibrary[index]));
   //add element into books
   booksDiv.insertAdjacentElement("beforeend", newBook);
+  //add event listener
+  const deleteBtn = document.querySelectorAll(".delete-btn");
+  deleteBtn[deleteBtn.length - 1].addEventListener("click", (e) => {
+    handleDelete(e);
+  });
   updateIndex();
+  console.log("myLibrary", myLibrary);
+}
+
+function handleDelete(e) {
+  const index = e.target.dataset.index;
+  const books = document.querySelectorAll(".book-card");
+  books[index].remove();
+  myLibrary.splice(index, 1);
+  updateIndex();
+  console.log("myLibrary", myLibrary);
 }
 
 function updateIndex() {
