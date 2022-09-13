@@ -69,7 +69,7 @@ function handleSubmit(e) {
     }
     [title, author, pages, read] = values;
     myLibrary.push(new Book({ title, author, pages, read }));
-    console.log("myLibrary", myLibrary);
+    addBook();
     modal.classList.toggle("on-screen");
   }
 }

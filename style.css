@@ -146,12 +146,14 @@ header {
 .b-title {
   display: flex;
   align-items: flex-end;
+  justify-content: center;
   font-family: "Alfa Slab One", cursive;
   font-size: 1.7rem;
   background: var(--add-bg);
   color: var(--bg);
   line-height: 2rem;
   text-align: center;
+  width: 100%;
   height: 200px;
   padding: 0 30px;
   position: relative;
@@ -219,11 +221,4 @@ header {
 
 .b-btn:hover {
   cursor: pointer;
-}
-
-.b-title i {
-  position: absolute;
-  top: 1ch;
-  right: 1ch;
-  color: var(--bg);
 }
