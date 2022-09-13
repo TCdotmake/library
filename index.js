@@ -1,6 +1,6 @@
 let myLibrary = [];
 const modal = document.getElementsByClassName("input-modal")[0];
-
+const booksDiv = document.getElementById("books");
 function Book({ author, title, pages, read }) {
   this.author = author;
   this.title = title;
@@ -8,7 +8,7 @@ function Book({ author, title, pages, read }) {
   this.read = read;
 }
 
-function createCard(bookObj) {
+function createCard(bookObj, index) {
   let { author, title, pages, read } = bookObj;
   if (read) {
     read = "read";
@@ -24,8 +24,8 @@ function createCard(bookObj) {
   <div class="b-author"><span>by </span><span>${author}</span></div>
   <div class="b-page"><span>${pages}</span><span> pages</span></div>
   <div class="b-btn-div">
-    <button class="b-btn"><span>${read}</span></button>
-    <button class="b-btn"><span>remove</span></button>
+    <button class="b-btn read-btn"><span>${read}</span></button>
+    <button class="b-btn delete-btn"><span>remove</span></button>
   </div>
 </div>`;
   newCard.innerHTML = innerHTML;
@@ -39,18 +39,10 @@ let test = {
   read: false,
 };
 
-const testBook = createCard(new Book(test));
-const testBook2 = createCard(new Book(test));
-const testBook3 = createCard(new Book(test));
-const testBook4 = createCard(new Book(test));
-const testBook5 = createCard(new Book(test));
-console.log(testBook);
-const books = document.getElementById("books");
-books.insertAdjacentElement("beforeend", testBook);
-books.insertAdjacentElement("beforeend", testBook2);
-books.insertAdjacentElement("beforeend", testBook3);
-books.insertAdjacentElement("beforeend", testBook4);
-books.insertAdjacentElement("beforeend", testBook5);
+const testArr = document.querySelectorAll(".book-card");
+testArr.forEach((e) => {
+  console.log("e", e);
+});
 
 function handleSubmit(e) {
   e.preventDefault();
@@ -79,6 +71,26 @@ function handleSubmit(e) {
     myLibrary.push(new Book({ title, author, pages, read }));
     console.log("myLibrary", myLibrary);
     modal.classList.toggle("on-screen");
+  }
+}
+
+function addBook() {
+  //get index of last element of myLibrary
+  const index = myLibrary.length - 1;
+  //make an element out of it
+  const newBook = createCard(new Book(myLibrary[index]));
+  //add element into books
+  booksDiv.insertAdjacentElement("beforeend", newBook);
+  updateIndex();
+}
+
+function updateIndex() {
+  //get collection of both buttons
+  const readBtns = document.querySelectorAll(".read-btn");
+  const deleteBtns = document.querySelectorAll(".delete-btn");
+  for (let i = 0; i < readBtns.length; i++) {
+    readBtns[i].setAttribute("data-index", i);
+    deleteBtns[i].setAttribute("data-index", i);
   }
 }
 

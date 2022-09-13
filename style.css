@@ -8,7 +8,7 @@
   font-size: 16px;
   --input-width: 180px;
   --bg: #f5f5f5;
-  --bg-text: #3c3c3c;
+  --bg-text: #727272;
   --add-bg: #ff5a5f;
   --book-shadow: #c27c7f;
 }
@@ -82,16 +82,18 @@ input[type="checkbox"]:hover {
 header {
   background: var(--bg-text);
   color: var(--bg);
-  clip-path: polygon(0 0, 100% 0%, 100% 30%, 0% 100%);
+  /* clip-path: polygon(0 0, 100% 0%, 100% 30%, 0% 100%); */
 }
 
 .main-title {
   font-family: "Alfa Slab One", cursive;
-  font-size: 5rem;
+  font-size: 1.5rem;
   padding: 0.5rem;
-  padding-bottom: 2rem;
+  /* padding-bottom: 2rem; */
   margin-left: 2rem;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
 }
 
 #add-book {
@@ -209,7 +211,8 @@ header {
   align-items: center;
 }
 
-.b-btn:nth-child(2) {
+.b-btn:nth-child(2),
+.delete-btn {
   background: var(--add-bg);
   color: var(--bg);
 }
