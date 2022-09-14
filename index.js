@@ -70,7 +70,7 @@ function handleSubmit(e) {
     [title, author, pages, read] = values;
     myLibrary.push(new Book({ title, author, pages, read }));
     addBook();
-    modal.classList.toggle("on-screen");
+    // modal.classList.toggle("on-screen");
   }
 }
 
@@ -114,9 +114,21 @@ submitBtn.addEventListener("click", (e) => {
   handleSubmit(e);
 });
 
-const addBtn = document.getElementById("add-book");
+// const addBtn = document.getElementById("add-book");
 
-addBtn.addEventListener("click", () => {
+// addBtn.addEventListener("click", () => {
+//   modal.classList.toggle("on-screen");
+//   addBtn.classList.toggle("rotate");
+// });
+const modalBG = document.getElementById("modal");
+const modalBtn = document.getElementById("toggle-modal");
+modalBtn.addEventListener("click", (e) => {
+  modalBG.style.display = "block";
   modal.classList.toggle("on-screen");
-  addBtn.classList.toggle("rotate");
+});
+modalBG.addEventListener("click", (e) => {
+  if (e.target === modalBG) {
+    modalBG.style.display = "none";
+    modal.classList.toggle("on-screen");
+  }
 });

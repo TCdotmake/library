@@ -18,9 +18,12 @@
     <title>Library</title>
   </head>
   <body>
-    <header>
-      <div class="main-title">Library</div>
-    </header>
+    <div class="header-section">
+      <header>
+        <div class="main-title">Library</div>
+      </header>
+      <button class="b-btn" id="toggle-modal">Add...</button>
+    </div>
 
     <div class="books" id="books">
       <!-- <div class="book-card">
@@ -39,26 +42,24 @@
     </div>
 
     <footer>TCdotmake © 2022</footer>
-    <div class="input-modal card">
-      <button class="add-btn" id="add-book">
-        <i class="bi bi-plus-circle-fill"></i>
-      </button>
-
-      <form action="">
-        <label for="title">Title:</label>
-        <input type="text" name="title" id="title" required />
-        <label for="author">Author:</label>
-        <input type="text" name="author" id="author" required />
-        <label for="pages">Number of pages:</label>
-        <input type="number" name="pages" id="pages" required />
-        <div class="checkbox-wrapper">
-          <label for="read">Have you read it?</label>
-          <input type="checkbox" name="read" id="read" />
-        </div>
-
-        <button class="btn submit" id="submit-new">Submit</button>
-      </form>
+    <div id="modal">
+      <div class="input-modal card">
+        <form action="">
+          <label for="title">Title:</label>
+          <input type="text" name="title" id="title" required />
+          <label for="author">Author:</label>
+          <input type="text" name="author" id="author" required />
+          <label for="pages">Number of pages:</label>
+          <input type="number" name="pages" id="pages" required />
+          <div class="checkbox-wrapper">
+            <label for="read">Have you read it?</label>
+            <input type="checkbox" name="read" id="read" />
+          </div>
+          <button class="btn submit" id="submit-new">Submit</button>
+        </form>
+      </div>
     </div>
+    <div id="modal-bg"></div>
     <script src="index.js"></script>
   </body>
 </html>
