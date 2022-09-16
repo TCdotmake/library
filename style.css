@@ -9,8 +9,12 @@
   --input-width: 180px;
   --bg: #f5f5f5;
   --bg-text: #727272;
-  --add-bg: #ff5a5f;
-  --book-shadow: #c27c7f;
+  --add-bg: #a77fda;
+  --add-bg-light: #c9acf0;
+  --book-shadow: #9582af;
+  --card-halves-height: 100px;
+  --main-width: 8rem;
+  --main-height: 3rem;
 }
 body {
   display: flex;
@@ -29,12 +33,6 @@ form {
   gap: 5px;
 }
 
-.card {
-  padding: 30px 30px 45px 30px;
-  background: rgb(186, 212, 186);
-  width: fit-content;
-  border-radius: 10px;
-}
 
 input[type="text"],
 input[type="number"] {
@@ -44,13 +42,6 @@ input[type="number"] {
   border-radius: 5px;
 }
 
-#submit-new {
-  width: fit-content;
-  padding: 10px 15px;
-  align-self: center;
-  border-radius: 5px;
-  border: none;
-}
 
 #submit-new:hover,
 input[type="checkbox"]:hover {
@@ -83,12 +74,16 @@ header {
   background: var(--bg-text);
   color: var(--bg);
   /* clip-path: polygon(0 0, 100% 0%, 100% 30%, 0% 100%); */
+  display: flex;
+  align-items: center;
+  
 }
 
 .main-title {
-  font-family: "Alfa Slab One", cursive;
+  
   font-size: 2.5rem;
   padding: 0.5rem;
+  padding-right: 0;
   /* padding-bottom: 2rem; */
   margin-left: 2rem;
   /* text-transform: uppercase; */
@@ -124,8 +119,9 @@ header {
   width: 90%;
   align-self: center;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 25px;
+  margin: 3rem 0;
 }
 .book {
   display: grid;
@@ -147,23 +143,26 @@ header {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  font-family: "Alfa Slab One", cursive;
-  font-size: 1.7rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-transform: uppercase;
   background: var(--add-bg);
   color: var(--bg);
-  line-height: 2rem;
+  line-height: 1.1rem;
   text-align: center;
   width: 100%;
-  height: 200px;
+  height: var(--card-halves-height);
   padding: 0 30px;
   position: relative;
+  font-family: 'Roboto Condensed', sans-serif;
+  padding-bottom: 5px;
 }
 
 .b-card-bottom {
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 200px;
+  height: var(--card-halves-height);
   width: 100%;
   color: var(--add-bg);
 }
@@ -171,7 +170,7 @@ header {
 .b-author {
   align-self: flex-end;
   padding-right: 10px;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 300;
 }
 
@@ -181,9 +180,10 @@ header {
 
 .b-page {
   position: absolute;
-  bottom: 1ch;
-  left: 1ch;
+  bottom: 2ch;
+  left: 2ch;
   font-weight: 700;
+  font-size: .6rem;
 }
 
 .b-btn-div {
@@ -203,11 +203,11 @@ header {
   border: 1px solid var(--add-bg);
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
-  font-size: 1.3rem;
-  font-weight: 400;
+  font-size: .6rem;
+  font-weight: 500;
   border-radius: 5px;
-  height: 35px;
-  width: 130px;
+  height: 20px;
+  width: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -222,9 +222,27 @@ header {
   cursor: pointer;
 }
 
-.header-section .b-btn {
+/* .header-section .b-btn {
   margin-top: 1rem;
   margin-left: 1rem;
+
+} */
+
+#toggle-modal{
+  background: var(--add-bg);
+  color: var(--bg);
+  border: 1px solid var(--bg);
+  font-size: 1rem;
+  width: auto;
+  height: auto;
+  font-weight: 300;
+  padding: .5rem 1rem;
+}
+
+i{
+  color:var(--bg);
+  font-size: 2.5rem;
+  line-height: 2.5rem;
 }
 
 #modal {
@@ -238,4 +256,70 @@ header {
   width: 100%;
   height: 100%;
   overflow: auto;
+}
+
+
+.input-modal.card{
+  background: var(--add-bg);
+  color: var(--bg);
+  /* border: 1px solid var(--add-bg); */
+  width: fit-content;
+  border-radius: 10px;
+  padding: 30px 30px 45px 30px;
+  border: 1px solid var(--bg);
+}
+
+#submit-new {
+  width: fit-content;
+  padding: 10px 15px;
+  align-self: center;
+  border-radius: 5px;
+  border: none;
+  background: var(--bg);
+  color: var(--add-bg);
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+}
+
+#header-btn{
+  position: relative;
+  width: var(--main-width);
+height: var(--main-height);
+margin:auto;
+background: transparent;
+border: 2px solid black;
+}
+
+#header-btn div{
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  margin: auto;
+}
+
+.main{
+  color: black;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', sans-serif;
+
+}
+
+#header-btn:hover{
+  cursor: pointer;
+}
+
+#header-btn:before{
+  content:'';
+  position: absolute;
+  left: 5px;
+  top: -7px;
+  width: var(--main-width);
+  height: var(--main-height);
+  background: var(--add-bg-light);
+  z-index: -1;
+}
+#header-btn:hover::before{
+  background: var(--add-bg);
 }
