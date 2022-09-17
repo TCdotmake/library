@@ -17,6 +17,7 @@
   --main-width: 8rem;
   --main-height: 3rem;
   --read-bg: rgb(130, 204, 95);
+  --header-height: 48px;
 }
 body {
 
@@ -136,8 +137,9 @@ input[type="checkbox"]:hover {
 
 .books {
   background: var(--bg-text);
-  min-height: 100%;
-  padding: 3% 8%;
+  min-height: 100vh;
+  padding: 30px 8%;
+  padding-top: calc(60px + var(--header-height));
   align-self: center;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -335,17 +337,33 @@ border: 2px solid black;
 
 
 .header-section{
-  position: relative;
+  position: fixed;
+  left: 0;
+  top: 0;
   width: 100%;
   padding: 15px;
   box-shadow:0 3px 15px var(--header-shadow);
   display: flex;
-
+  z-index: 2;
+  background: var(--bg);
 }
 
 .header-section span{
   margin-left: auto;
+}
 
+footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background:var(--header-shadow);
+  color:var(--bg);
 }
 
 .copyR, i{
@@ -360,11 +378,7 @@ i{
 }
 
 
-body{
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  
-}
+
 
 ::-webkit-scrollbar{
   width: 5px;
