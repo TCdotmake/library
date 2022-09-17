@@ -16,6 +16,7 @@
   --card-halves-height: 100px;
   --main-width: 8rem;
   --main-height: 3rem;
+  --read-bg: rgb(130, 204, 95);
 }
 body {
 
@@ -204,6 +205,12 @@ input[type="checkbox"]:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.b-btn.read{
+  border: none;
+  background: var(--read-bg);
+  color: var(--bg);
 }
 
 .delete-btn {

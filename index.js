@@ -1,6 +1,7 @@
 let myLibrary = [];
 const modal = document.getElementsByClassName("input-modal")[0];
 const booksDiv = document.getElementById("books");
+
 function Book({ author, title, pages, read }) {
   this.author = author;
   this.title = title;
@@ -10,11 +11,9 @@ function Book({ author, title, pages, read }) {
 
 function createCard(bookObj, index) {
   let { author, title, pages, read } = bookObj;
-  if (read) {
-    read = "read";
-  } else {
-    read = "not read";
-  }
+  let readClass = '';
+  if(read){readClass = 'read';}
+  read = parseRead(read);
   const newCard = document.createElement("div");
   newCard.classList.add("book-card");
   const innerHTML = `<div class="b-title">
@@ -24,7 +23,7 @@ function createCard(bookObj, index) {
   <div class="b-author"><span>by </span><span>${author}</span></div>
   <div class="b-page"><span>${pages}</span><span> pages</span></div>
   <div class="b-btn-div">
-    <button class="b-btn read-btn">${read}</button>
+    <button class="b-btn read-btn ${readClass}">${read}</button>
     <button class="b-btn delete-btn">remove</button>
   </div>
 </div>`;
@@ -32,12 +31,10 @@ function createCard(bookObj, index) {
   return newCard;
 }
 
-let test = {
-  author: "Scott Lynch",
-  title: "Red Seas Under Red Skies",
-  pages: 578,
-  read: false,
-};
+function parseRead(read){
+  if(read){return 'read';}
+  else return 'not read';
+}
 
 const testArr = document.querySelectorAll(".book-card");
 testArr.forEach((e) => {
@@ -83,11 +80,24 @@ function addBook() {
   booksDiv.insertAdjacentElement("beforeend", newBook);
   //add event listener
   const deleteBtn = document.querySelectorAll(".delete-btn");
+  const readBtn = document.querySelectorAll('.read-btn') ;
+  readBtn[readBtn.length -1].addEventListener('click', e=>{
+    handleReadToggle(e);
+  }) 
   deleteBtn[deleteBtn.length - 1].addEventListener("click", (e) => {
     handleDelete(e);
   });
   updateIndex();
   console.log("myLibrary", myLibrary);
+}
+
+function handleReadToggle(e){
+  const index = e.target.dataset.index;
+  
+  //change myLibrary first
+  myLibrary[index].read = !(myLibrary[index].read );
+  e.target.innerText = parseRead(myLibrary[index].read);
+  e.target.classList.toggle('read');
 }
 
 function handleDelete(e) {
@@ -114,12 +124,7 @@ submitBtn.addEventListener("click", (e) => {
   handleSubmit(e);
 });
 
-// const addBtn = document.getElementById("add-book");
-
-// addBtn.addEventListener("click", () => {
-//   modal.classList.toggle("on-screen");
-//   addBtn.classList.toggle("rotate");
-// });
+// -----modal-----
 const modalBG = document.getElementById("modal");
 const modalBtn = document.getElementById("toggle-modal");
 modalBtn.addEventListener("click", (e) => {
@@ -132,3 +137,43 @@ modalBG.addEventListener("click", (e) => {
     modal.classList.toggle("on-screen");
   }
 });
+// load smapleBooks if myLibrary is empty
+
+let sampleBooks = [
+{
+  author: "Scott Lynch",
+  title: "The Lies of Locke Lamora",
+  pages: 752,
+  read: true,
+},
+{
+  author: "Scott Lynch",
+  title: "The Bastards and the Knives",
+  pages: 336,
+  read: true,
+},
+{
+  author: "Scott Lynch",
+  title: "Red Seas Under Red Skies",
+  pages: 578,
+  read: false,
+},
+{
+  author: "Scott Lynch",
+  title: "The Republic of Thieves",
+  pages: 650,
+  read: false,
+},
+]
+
+window.addEventListener('load', e=>{
+  if(myLibrary.length===0){
+    sampleBooks.forEach(book=>{
+      myLibrary.push(new Book(book));
+    addBook();
+    })
+  }
+})
+
+
+
