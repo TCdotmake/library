@@ -1,7 +1,7 @@
 let myLibrary = [];
 const modal = document.getElementsByClassName("input-modal")[0];
 const booksDiv = document.getElementById("books");
-
+const dummyBook = document.getElementById('dummy-new-book');
 function Book({ author, title, pages, read }) {
   this.author = author;
   this.title = title;
@@ -16,17 +16,16 @@ function createCard(bookObj, index) {
   read = parseRead(read);
   const newCard = document.createElement("div");
   newCard.classList.add("book-card");
-  const innerHTML = `<div class="b-title">
-  <span>${title}</span>
-</div>
-<div class="b-card-bottom">
-  <div class="b-author"><span>by </span><span>${author}</span></div>
-  <div class="b-page"><span>${pages}</span><span> pages</span></div>
-  <div class="b-btn-div">
-    <button class="b-btn read-btn ${readClass}">${read}</button>
-    <button class="b-btn delete-btn">remove</button>
-  </div>
-</div>`;
+  const innerHTML = 
+  `<div class="b-title"><span>${title}</span></div>
+  <div class="b-card-bottom">
+    <div class="b-author"><span>by </span><span>${author}</span></div>
+    <div class="b-page"><span>${pages}</span><span> pages</span></div>
+    <div class="b-btn-div">
+      <button class="b-btn read-btn ${readClass}">${read}</button>
+      <button class="b-btn delete-btn">remove</button>
+    </div>
+  </div>`;
   newCard.innerHTML = innerHTML;
   return newCard;
 }
@@ -77,7 +76,8 @@ function addBook() {
   //make an element out of it
   const newBook = createCard(new Book(myLibrary[index]));
   //add element into books
-  booksDiv.insertAdjacentElement("beforeend", newBook);
+  // booksDiv.insertAdjacentElement("beforeend", newBook);
+  dummyBook.insertAdjacentElement('beforebegin',newBook);
   //add event listener
   const deleteBtn = document.querySelectorAll(".delete-btn");
   const readBtn = document.querySelectorAll('.read-btn') ;
@@ -124,9 +124,20 @@ submitBtn.addEventListener("click", (e) => {
   handleSubmit(e);
 });
 
+const cancelBtn = document.getElementById('cancel');
+cancelBtn.addEventListener('click', e=>{
+  e.preventDefault();
+  modalBG.style.display = "none";
+    modal.classList.toggle("on-screen");
+})
+
 // -----modal-----
 const modalBG = document.getElementById("modal");
 const modalBtn = document.getElementById("toggle-modal");
+dummyBook.addEventListener("click", (e) => {
+  modalBG.style.display = "block";
+  modal.classList.toggle("on-screen");
+});
 modalBtn.addEventListener("click", (e) => {
   modalBG.style.display = "block";
   modal.classList.toggle("on-screen");

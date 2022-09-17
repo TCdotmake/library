@@ -1,7 +1,7 @@
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
+  box-sizing:border-box;
 }
 :root {
   font-family: "Roboto", sans-serif;
@@ -40,10 +40,15 @@ input[type="number"] {
   border: none;
   height: 1.5rem;
   border-radius: 5px;
+  padding-left: 2ch;
 }
 
+input[type="text"]:focus-visible,
+input[type="number"]:focus-visible{
+  outline: none;
+} 
 
-#submit-new:hover,
+.modal-btn:hover,
 input[type="checkbox"]:hover {
   cursor: pointer;
 }
@@ -106,6 +111,29 @@ input[type="checkbox"]:hover {
   cursor: pointer;
 }
 
+#dummy-new-book{
+  height: calc(2px + var(--card-halves-height) * 2 );
+  background: var(--bg);
+  box-shadow: 2px 6px 8px var(--book-shadow);
+  overflow: hidden;
+  border-radius: 5px;
+  border: 5px dashed var(--add-bg);
+  display: grid;
+  place-content: center;
+}
+
+#dummy-new-book:hover{
+  cursor: pointer;
+}
+
+#dummy-new-book i{
+  font-size: 3rem;
+}
+
+#dummy-new-book:hover i{
+  font-size: 3.5rem;
+}
+
 .books {
   background: var(--bg-text);
   min-height: 100%;
@@ -130,6 +158,7 @@ input[type="checkbox"]:hover {
   border-radius: 5px;
   box-shadow: 2px 6px 8px var(--book-shadow);
   height: fit-content;
+  overflow: hidden;
 }
 
 .b-title {
@@ -162,8 +191,9 @@ input[type="checkbox"]:hover {
 }
 
 .b-author {
+  text-align: end;
   align-self: flex-end;
-  padding-right: 10px;
+  padding: 0 10px;
   font-size: 1rem;
   font-weight: 300;
 }
@@ -222,16 +252,6 @@ input[type="checkbox"]:hover {
   cursor: pointer;
 }
 
-/* .header-section .b-btn {
-  margin-top: 1rem;
-  margin-left: 1rem;
-
-} */
-
-
-
-
-
 #modal {
   display: none;
   position: fixed;
@@ -245,7 +265,6 @@ input[type="checkbox"]:hover {
   overflow: auto;
 }
 
-
 .input-modal.card{
   background: var(--add-bg);
   color: var(--bg);
@@ -256,7 +275,7 @@ input[type="checkbox"]:hover {
   border: 1px solid var(--bg);
 }
 
-#submit-new {
+.modal-btn{
   width: fit-content;
   padding: 10px 15px;
   align-self: center;
@@ -333,6 +352,7 @@ border: 2px solid black;
   color: var(--add-bg);
   display: flex;
   align-items: center;
+  align-self: flex-start;
 }
 
 i{
@@ -348,4 +368,11 @@ body{
 
 ::-webkit-scrollbar{
   width: 5px;
+}
+
+.modal-btn-div{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
 }

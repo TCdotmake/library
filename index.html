@@ -26,9 +26,10 @@
 
 
 
-    <div class="books" id="books"></div>
-<!-- 
-    <footer>TCdotmake © 2022</footer>  -->
+    <div class="books" id="books">
+      <button id="dummy-new-book"><i class="bi bi-plus-circle-fill"></i></div>
+    </div>
+
     <div id="modal">
       <div class="input-modal card">
         <form action="">
@@ -42,7 +43,10 @@
             <label for="read">Have you read it?</label>
             <input type="checkbox" name="read" id="read" />
           </div>
-          <button class="btn submit" id="submit-new">Submit</button>
+          <div class="modal-btn-div"> 
+            <button class="modal-btn" id="submit-new">Submit</button>
+            <button class="modal-btn" id="cancel">Cancel</button>
+          </div>
         </form>
       </div>
     </div>
