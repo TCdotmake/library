@@ -40,6 +40,28 @@ function createCard(bookObj, index) {
   return newCard;
 }
 
+class CARD {
+  constructor({ author, title, pages, read }, index) {
+    let readClass = "";
+    if (read) {
+      readClass = "read";
+    }
+    read = parseRead(read);
+    this.card = document.createElement("div");
+    this.card.classList.add("book-card");
+    const innerHTML = `<div class="b-title"><span>${title}</span></div>
+  <div class="b-card-bottom">
+    <div class="b-author"><span>by </span><span>${author}</span></div>
+    <div class="b-page"><span>${pages}</span><span> pages</span></div>
+    <div class="b-btn-div">
+      <button class="b-btn read-btn ${readClass}">${read}</button>
+      <button class="b-btn delete-btn">remove</button>
+    </div>
+  </div>`;
+    this.card.innerHTML = innerHTML;
+  }
+}
+
 function parseRead(read) {
   if (read) {
     return "read";
@@ -85,7 +107,8 @@ function addBook() {
   //get index of last element of myLibrary
   const index = myLibrary.length - 1;
   //make an element out of it
-  const newBook = createCard(new BOOK(myLibrary[index]));
+  // const newBook = createCard(new BOOK(myLibrary[index]));
+  const newBook = new CARD(new BOOK(myLibrary[index])).card;
   //add element into books
   // booksDiv.insertAdjacentElement("beforeend", newBook);
   dummyBook.insertAdjacentElement("beforebegin", newBook);
