@@ -1,7 +1,7 @@
 let myLibrary = [];
 const modal = document.getElementsByClassName("input-modal")[0];
 const booksDiv = document.getElementById("books");
-const dummyBook = document.getElementById('dummy-new-book');
+const dummyBook = document.getElementById("dummy-new-book");
 function Book({ author, title, pages, read }) {
   this.author = author;
   this.title = title;
@@ -9,15 +9,25 @@ function Book({ author, title, pages, read }) {
   this.read = read;
 }
 
+class BOOK {
+  constructor({ author, title, pages, read }) {
+    this.author = author;
+    this.title = title;
+    this.pages = pages;
+    this.read = read;
+  }
+}
+
 function createCard(bookObj, index) {
   let { author, title, pages, read } = bookObj;
-  let readClass = '';
-  if(read){readClass = 'read';}
+  let readClass = "";
+  if (read) {
+    readClass = "read";
+  }
   read = parseRead(read);
   const newCard = document.createElement("div");
   newCard.classList.add("book-card");
-  const innerHTML = 
-  `<div class="b-title"><span>${title}</span></div>
+  const innerHTML = `<div class="b-title"><span>${title}</span></div>
   <div class="b-card-bottom">
     <div class="b-author"><span>by </span><span>${author}</span></div>
     <div class="b-page"><span>${pages}</span><span> pages</span></div>
@@ -30,9 +40,10 @@ function createCard(bookObj, index) {
   return newCard;
 }
 
-function parseRead(read){
-  if(read){return 'read';}
-  else return 'not read';
+function parseRead(read) {
+  if (read) {
+    return "read";
+  } else return "not read";
 }
 
 const testArr = document.querySelectorAll(".book-card");
@@ -64,7 +75,7 @@ function handleSubmit(e) {
       }
     }
     [title, author, pages, read] = values;
-    myLibrary.push(new Book({ title, author, pages, read }));
+    myLibrary.push(new BOOK({ title, author, pages, read }));
     addBook();
     // modal.classList.toggle("on-screen");
   }
@@ -74,16 +85,16 @@ function addBook() {
   //get index of last element of myLibrary
   const index = myLibrary.length - 1;
   //make an element out of it
-  const newBook = createCard(new Book(myLibrary[index]));
+  const newBook = createCard(new BOOK(myLibrary[index]));
   //add element into books
   // booksDiv.insertAdjacentElement("beforeend", newBook);
-  dummyBook.insertAdjacentElement('beforebegin',newBook);
+  dummyBook.insertAdjacentElement("beforebegin", newBook);
   //add event listener
   const deleteBtn = document.querySelectorAll(".delete-btn");
-  const readBtn = document.querySelectorAll('.read-btn') ;
-  readBtn[readBtn.length -1].addEventListener('click', e=>{
+  const readBtn = document.querySelectorAll(".read-btn");
+  readBtn[readBtn.length - 1].addEventListener("click", (e) => {
     handleReadToggle(e);
-  }) 
+  });
   deleteBtn[deleteBtn.length - 1].addEventListener("click", (e) => {
     handleDelete(e);
   });
@@ -91,13 +102,13 @@ function addBook() {
   console.log("myLibrary", myLibrary);
 }
 
-function handleReadToggle(e){
+function handleReadToggle(e) {
   const index = e.target.dataset.index;
-  
+
   //change myLibrary first
-  myLibrary[index].read = !(myLibrary[index].read );
+  myLibrary[index].read = !myLibrary[index].read;
   e.target.innerText = parseRead(myLibrary[index].read);
-  e.target.classList.toggle('read');
+  e.target.classList.toggle("read");
 }
 
 function handleDelete(e) {
@@ -124,12 +135,12 @@ submitBtn.addEventListener("click", (e) => {
   handleSubmit(e);
 });
 
-const cancelBtn = document.getElementById('cancel');
-cancelBtn.addEventListener('click', e=>{
+const cancelBtn = document.getElementById("cancel");
+cancelBtn.addEventListener("click", (e) => {
   e.preventDefault();
   modalBG.style.display = "none";
-    modal.classList.toggle("on-screen");
-})
+  modal.classList.toggle("on-screen");
+});
 
 // -----modal-----
 const modalBG = document.getElementById("modal");
@@ -151,40 +162,37 @@ modalBG.addEventListener("click", (e) => {
 // load smapleBooks if myLibrary is empty
 
 let sampleBooks = [
-{
-  author: "Scott Lynch",
-  title: "The Lies of Locke Lamora",
-  pages: 752,
-  read: true,
-},
-{
-  author: "Scott Lynch",
-  title: "The Bastards and the Knives",
-  pages: 336,
-  read: true,
-},
-{
-  author: "Scott Lynch",
-  title: "Red Seas Under Red Skies",
-  pages: 578,
-  read: false,
-},
-{
-  author: "Scott Lynch",
-  title: "The Republic of Thieves",
-  pages: 650,
-  read: false,
-},
-]
+  {
+    author: "Scott Lynch",
+    title: "The Lies of Locke Lamora",
+    pages: 752,
+    read: true,
+  },
+  {
+    author: "Scott Lynch",
+    title: "The Bastards and the Knives",
+    pages: 336,
+    read: true,
+  },
+  {
+    author: "Scott Lynch",
+    title: "Red Seas Under Red Skies",
+    pages: 578,
+    read: false,
+  },
+  {
+    author: "Scott Lynch",
+    title: "The Republic of Thieves",
+    pages: 650,
+    read: false,
+  },
+];
 
-window.addEventListener('load', e=>{
-  if(myLibrary.length===0){
-    sampleBooks.forEach(book=>{
-      myLibrary.push(new Book(book));
-    addBook();
-    })
+window.addEventListener("load", (e) => {
+  if (myLibrary.length === 0) {
+    sampleBooks.forEach((book) => {
+      myLibrary.push(new BOOK(book));
+      addBook();
+    });
   }
-})
-
-
-
+});
